@@ -1,0 +1,119 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card mt-5">
+        <div class="card-header">KMI Skaiciuokle</div>
+        <div class="card-body">
+          <div class="input-group">
+            <input
+              type="number"
+              class="form-control"
+              aria-label="Amount (to the nearest dollar)"
+              [(ngModel)]="svoris"
+            />
+            <div class="input-group-append">
+              <span class="input-group-text">Svoris, kg</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="input-group">
+            <input
+              type="number"
+              class="form-control"
+              aria-label="Amount (to the nearest dollar)"
+              [(ngModel)]="ugis"
+            />
+            <div class="input-group-append">
+              <span class="input-group-text">Ugis, cm</span>
+            </div>
+          </div>
+          <button class="btn btn-primary mt-4" (click)="skaiciuoti()">
+            Skaiciuoti KMI
+          </button>
+          <hr />
+          <div class="alert alert-secondary" *ngIf="kmi">
+            Jusu KMI: {{ kmi.toFixed(2) }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="card mt-5">
+        <div class="card-header">KMI Reiksmes</div>
+        <!-- <div class="card-body">
+          <div class="alert" [ngClass]="{'alert-warning':kmi<18.5}">Nepakankamas svoris</div>
+          <hr>
+          <div class="alert" [ngClass]="{'alert-warning':kmi>18.5 && kmi<=25}">Normalus svoris</div>
+          <hr>
+          <div class="alert"[ngClass]="{'alert-warning':kmi>25 && kmi<=30}">Antsvoris</div>
+          <hr>
+          <div class="alert" [ngClass]="{'alert-warning':kmi>30 && kmi<=35}">I laipsnio nutukimas</div>
+          <hr>
+          <div class="alert" [ngClass]="{'alert-warning':kmi>35 && kmi<=40}">II laipsnio nutukimas</div>
+          <hr>
+          <div class="alert"[ngClass]="{'alert-warning':kmi>40}">III laipsnio nutukimas</div>
+       
+        </div> -->
+        <div class="card-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col col-4">KMI reiksme</th>
+              <th scope="col col-4"></th>
+              <th scope="col col-4">Ligu rizika</th>
+              <th scope="col "></th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr [ngClass]="{'alert-warning':kmi<18.5}">
+              <th scope="row"> iki 18.5 </th>
+              <td>Nepakankamas svoris</td>
+              <td>Yra riziku</td>
+              <td><div style="border-radius: 50%; background-color: grey;">.</div></td>
+             
+            </tr>
+            <tr [ngClass]="{'alert-success':kmi>18.5 && kmi<=25}">
+              <th scope="row">18.5 - 25</th>
+              <td>Normalus svoris</td>
+              <td>Nera</td>
+              <td><div style="border-radius: 50%; background-color: green;">.</div></td>
+              
+            </tr>
+            <tr [ngClass]="{'alert-info':kmi>25 && kmi<=30}">
+              <th scope="row">25 - 30</th>
+              <td>Antsvoris</td>
+              <td>Nedidele rizika</td>
+              <td><div style="border-radius: 50%; background-color: grey;">.</div></td>
+             
+            </tr>
+            <tr [ngClass]="{'alert-primary':kmi>30 && kmi<=35}">
+              <th scope="row">30 - 35</th>
+              <td>I laipsnio nutukimas</td>
+              <td>Padidejusi rizika</td>
+              <td><div style="border-radius: 50%; background-color: yellowgreen;">.</div></td>
+             
+            </tr>
+            <tr [ngClass]="{'alert-danger':kmi>35 && kmi<=40}">
+              <th scope="row">35 - 40</th>
+              <td>II laipsnio nutukimas</td>
+              <td>Didele rizika</td>
+              <td><div style="border-radius: 50%; background-color: blue;">.</div></td>
+             
+            </tr>
+            <tr [ngClass]="{'alert-danger':kmi>40}">
+              <th scope="row"> virs 40 </th>
+              <td>III laipsnio nutukimas</td>
+              <td>Labai didele rizika</td>
+              <td><div style="border-radius: 50%; background-color: red;">.</div></td>
+             
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
